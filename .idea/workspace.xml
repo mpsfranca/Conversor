@@ -5,11 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e6a23624-04af-4424-baea-f7121037c3af" name="Changes" comment="Finished project">
-      <change afterPath="$PROJECT_DIR$/src/ApiConnection/Api.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Currency/Currency.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/GUI/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Conversor.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Conversor.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ApiConnection/Api.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/ApiConnection/Api.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/GUI/Menu.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/GUI/Menu.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -118,10 +116,24 @@
       <workItem from="1715816001567" duration="3273000" />
       <workItem from="1715827730188" duration="3028000" />
       <workItem from="1715926679599" duration="9628000" />
+      <workItem from="1715937344610" duration="3054000" />
     </task>
+    <task id="LOCAL-00001" summary="Finished project">
+      <option name="closed" value="true" />
+      <created>1715937520343</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1715937520343</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Finished project" />
+    <option name="LAST_COMMIT_MESSAGE" value="Finished project" />
   </component>
 </project>

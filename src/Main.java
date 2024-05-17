@@ -13,8 +13,10 @@ public class Main {
         menu.mainMenu();
         int option = sc.nextInt();
         while (option < menu.getSize()) {
-            if (option >= 1 && option <= menu.getSize() - 2) {
+            if (option >= 1 && option <= menu.getSize() - 3) {
                 menu.conversionMenu(sc,option);
+            } else if (option == menu.getSize() - 1) {
+                menu.showHistory();
             } else {
                 menu.customConversionMenu(sc);
             }

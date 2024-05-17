@@ -8,6 +8,9 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
+import java.time.Instant;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -17,7 +20,8 @@ public class Api {
     private static final Gson gson = new Gson();
     private static HttpClient client;
     private static final Map<String,String> currencies = new HashMap<>();
-
+    private static final File history = new File("history.txt");
+    private static final String DATE_FORMAT = "dd/MM/yyyy - HH:mm:ss";
     public Api() {
         Api.client = HttpClient.newHttpClient();
         if (Api.currencies.isEmpty()) {
@@ -39,9 +43,17 @@ public class Api {
 
     public Float getConversionResult(Currency c1, Currency c2, Float valueToConvert) {
         try {
-            String url = String.format("%s%s/pair/%s/%s/%f",baseString,API_KEY,c1.getCode(),c2.getCode(),valueToConvert);
-            return Float.parseFloat(request(url,"conversion_result"));
-        } catch (NullPointerException e) {
+            Instant instant = Instant.now();
+            String formattedInstant = DateTimeFormatter.ofPattern(DATE_FORMAT).withZone(ZoneId.systemDefault()).format(instant);
+            BufferedWriter bw = new BufferedWriter(new FileWriter(history,true));
+            String url = String.format("%s%s/pair/%s/%s/%f",baseString,API_KEY,c1.code(),c2.code(),valueToConvert);
+            Float conversionResult = Float.parseFloat(request(url,"conversion_result"));
+            String toWrite = String.format("%s // %.4f [%s] ==> %.4f [%s]",formattedInstant,valueToConvert,c1.code(),conversionResult,c2.code());
+            bw.write(toWrite);
+            bw.newLine();
+            bw.close();
+            return conversionResult;
+        } catch (NullPointerException | IOException e) {
             System.out.println(e.getMessage());
         }
         return null;
@@ -49,7 +61,7 @@ public class Api {
 
     public Float getConversionRate(Currency c1, Currency c2) {
         try {
-            String url = String.format("%s%s/pair/%s/%s",baseString,API_KEY,c1.getCode(),c2.getCode());
+            String url = String.format("%s%s/pair/%s/%s",baseString,API_KEY,c1.code(),c2.code());
             return Float.parseFloat(request(url,"conversion_rate"));
         } catch (NumberFormatException e) {
             System.out.println(e.getMessage());
